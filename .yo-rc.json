@@ -12,5 +12,13 @@
     "projectDirName": "blah",
     "setupVSC": true,
     "cpp11": true
+  },
+  "generator-teplugin": {
+    "appname": "foo",
+    "projectDir": true,
+    "projectDirName": "foo",
+    "setupVSC": true,
+    "cpp11": true,
+    "terralibDir": "/opt/terralib/5.4.1"
   }
 }

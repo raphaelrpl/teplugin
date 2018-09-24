@@ -1,6 +1,6 @@
 {
   "name": "te.plugin.<%= appname %>",
-  "display_name": "<%= description %>",
+  "display_name": "<%= appname %>s",
   "description": "<%= description %>",
   "version": "5.4.1",
   "release": "<%= releaseDate %>",

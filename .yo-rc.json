@@ -1,22 +1,15 @@
 {
   "generator-node": {
     "promptValues": {
-      "authorName": "John Thomas",
-      "authorEmail": "johnt67@gmail.com",
+      "authorName": "Raphael Willian",
+      "authorEmail": "raphael.wcosta@gmail.com",
       "authorUrl": ""
     }
   },
-  "generator-basic-cpp": {
-    "appname": "blah",
-    "projectDir": true,
-    "projectDirName": "blah",
-    "setupVSC": true,
-    "cpp11": true
-  },
   "generator-teplugin": {
-    "appname": "foo",
+    "appname": "helloworld",
     "projectDir": true,
-    "projectDirName": "foo",
+    "projectDirName": "helloworld",
     "setupVSC": true,
     "cpp11": true,
     "terralibDir": "/opt/terralib/5.4.1"

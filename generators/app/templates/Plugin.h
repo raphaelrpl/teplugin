@@ -14,8 +14,8 @@
 #include <memory>
 #include <vector>
 
-// wtss.tl
-// #include "Dialog.h"
+// Plugin Example
+#include "PluginDialog.h"
 
 namespace te
 {
@@ -39,11 +39,11 @@ class Plugin : public QObject, public te::core::CppPlugin
 
     Plugin(const te::core::PluginInfo& pluginInfo);
 
-    virtual ~Plugin();
+    ~Plugin();
 
-    void startup() override;
+    void startup();
 
-    void shutdown() override;
+    void shutdown();
 
   protected:
 
@@ -51,16 +51,19 @@ class Plugin : public QObject, public te::core::CppPlugin
 
     void unregisterActions();
 
-  Q_SIGNALS:
+    Q_SIGNALS:
 
     void triggered(te::qt::af::evt::Event* e);
 
   protected:
 
     QMenu* m_menu;
-    QAction* m_wtssAction;
-    QAction* m_timeSeriesAction;
-    QToolBar* m_wtssToolBar;
+
+    QToolBar* m_pluginExampleToolBar;
+
+    QAction* m_pluginExampleMenuAction;
+
+    QAction* m_pluginExampleToolbarAction;
 
   protected slots:
 
@@ -72,7 +75,7 @@ class Plugin : public QObject, public te::core::CppPlugin
 
   private:
 
-  // std::unique_ptr<Dialog> m_dialog;
+    std::unique_ptr<PluginDialog> m_PluginExampleDlg;
 
 };
 

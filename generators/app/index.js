@@ -25,8 +25,9 @@ function validateTerraLibDirectory(directory) {
 
   // If found in cmake directory, assumes TerraLib installation
   if (fs.existsSync(cmakeDirectory) &&
-      fs.readdirSync(cmakeDirectory).length > 0)
+      fs.readdirSync(cmakeDirectory).length > 0) {
     return true;
+  }
 
   return false;
 }
@@ -58,9 +59,9 @@ function validateTerraLibDirectory(directory) {
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-    this.argument('appname', { type: String, required: false });
-    this.argument('description', { type: String, required: false });
-    this.argument('terralibDir', { type: String, required: false });
+    this.argument('appname', {type: String, required: false});
+    this.argument('description', {type: String, required: false});
+    this.argument('terralibDir', {type: String, required: false});
     var notMakeOptArgs = {
       description: 'Skip the CMake generation of the makefile.',
       type: Boolean,
@@ -106,7 +107,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'terralibDir',
         message: 'Path to TerraLib: ',
-        required: true,
+        required: true
       });
     }
 
@@ -115,11 +116,13 @@ module.exports = class extends Generator {
         if (answers.name) {
           this.options.appname = answers.name;
         }
-        if (answers.terralibDir)
+        if (answers.terralibDir) {
           this.options.terralibDir = answers.terralibDir;
+        }
 
-        if (answers.description)
+        if (answers.description) {
           this.options.description = answers.description;
+        }
 
         const terralibDir = this.options.terralibDir;
         try {
@@ -148,25 +151,44 @@ module.exports = class extends Generator {
       destination = this.options.projectDirName + '/';
     }
 
-    const { appname, description, terralibDir } = this.options;
+    const {appname, description, terralibDir} = this.options;
 
     const appnameUpper = appname.toUpperCase();
 
     this.fs.copyTpl(
       this.templatePath('CMakeLists.txt'),
       this.destinationPath(path.join(destination, 'CMakeLists.txt')),
-      { appname: this.options.appname, terralibDir }
+      {appname: this.options.appname, terralibDir}
     );
 
     this.fs.copyTpl(
       this.templatePath('Plugin.h'),
       this.destinationPath(path.join(destination, 'src/Plugin.h')),
-      { appnameUpper }
+      {appnameUpper}
     );
+
     this.fs.copyTpl(
       this.templatePath('Plugin.cpp'),
       this.destinationPath(path.join(destination, 'src/Plugin.cpp')),
-      { appnameUpper }
+      {appnameUpper}
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('PluginDialog.h'),
+      this.destinationPath(path.join(destination, 'src/PluginDialog.h')),
+      {appnameUpper}
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('PluginDialog.cpp'),
+      this.destinationPath(path.join(destination, 'src/PluginDialog.cpp')),
+      {appnameUpper}
+    );
+
+    this.fs.copy(
+      this.templatePath('PluginDialog.ui'),
+      this.destinationPath(path.join(destination, 'src/ui/PluginDialog.ui')),
+      { }
     );
 
     this.fs.copy(
@@ -177,7 +199,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('plugin.teplg.json'),
       this.destinationPath(path.join(destination, `${appname}.teplg.json`)),
-      { appname, description, releaseDate: new Date().toLocaleDateString("en-US") }
+      {appname, description, releaseDate: new Date().toLocaleDateString('en-US')}
     );
   }
 
@@ -185,7 +207,7 @@ module.exports = class extends Generator {
     var theName = this.options.appname;
     var createdMsg = 'Project ' + theName + ' has been created.';
 
-    const { terralibDir } = this.options;
+    const {terralibDir} = this.options;
 
     if (this.options.doNotMake) {
       this.log(chalk.red(createdMsg));

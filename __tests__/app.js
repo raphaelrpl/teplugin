@@ -7,7 +7,7 @@ const path = require('path');
 
 describe('teplugin:app with no arguments, but options', () => {
   const appname = 'myplugin';
-  const description = "The plugins displays a Helloworld content in TerraView";
+  const description = 'The plugins displays a Helloworld content in TerraView';
   const destination = path.join(os.tmpdir(), 'test-teplugin');
   const terralibDir = '/opt/terralib/5.4.1';
 
@@ -15,7 +15,7 @@ describe('teplugin:app with no arguments, but options', () => {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .inDir(destination)
       .withOptions({doNotMake: true})
-      .withPrompts({ appname, description, name: appname, projectDir: true, terralibDir });
+      .withPrompts({appname, description, name: appname, projectDir: true, terralibDir});
   });
 
   const files = [
@@ -43,7 +43,7 @@ describe('teplugin:app with no arguments, but options', () => {
 
 describe('teplugin:app with arguments, without options', () => {
   const appname = 'myplugin';
-  const description = "The plugins displays a Helloworld content in TerraView";
+  const description = 'The plugins displays a Helloworld content in TerraView';
   const terralibDir = '/opt/terralib/5.4.1';
   const destination = path.join(os.tmpdir(), 'test-teplugin-arguments');
 
@@ -51,7 +51,7 @@ describe('teplugin:app with arguments, without options', () => {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .inDir(destination)
       .withOptions({doNotMake: true})
-      .withArguments([appname, description, terralibDir])
+      .withArguments([appname, description, terralibDir]);
   });
 
   const files = [
@@ -73,7 +73,6 @@ describe('teplugin:app with arguments, without options', () => {
   });
 });
 
-
 describe('teplugin:app with invalid TerraLib directory', () => {
   const appname = 'myplugin';
   const terralibDir = '/it/does/not/exists';
@@ -83,7 +82,7 @@ describe('teplugin:app with invalid TerraLib directory', () => {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .inDir(destination)
       .withOptions({doNotMake: true})
-      .withPrompts({ appname, terralibDir })
+      .withPrompts({appname, terralibDir});
   });
 
   const files = [

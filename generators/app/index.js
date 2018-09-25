@@ -162,33 +162,39 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
+      this.templatePath('Config.h'),
+      this.destinationPath(path.join(destination, 'src/Config.h')),
+      { appnameUpper }
+    );
+
+    this.fs.copyTpl(
       this.templatePath('Plugin.h'),
       this.destinationPath(path.join(destination, 'src/Plugin.h')),
-      {appnameUpper}
+      { appnameUpper }
     );
 
     this.fs.copyTpl(
       this.templatePath('Plugin.cpp'),
       this.destinationPath(path.join(destination, 'src/Plugin.cpp')),
-      {appnameUpper}
+      { appnameUpper }
     );
 
     this.fs.copyTpl(
       this.templatePath('PluginDialog.h'),
       this.destinationPath(path.join(destination, 'src/PluginDialog.h')),
-      {appnameUpper}
+      { appnameUpper }
     );
 
     this.fs.copyTpl(
       this.templatePath('PluginDialog.cpp'),
       this.destinationPath(path.join(destination, 'src/PluginDialog.cpp')),
-      {appnameUpper}
+      { appname }
     );
 
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('PluginDialog.ui'),
       this.destinationPath(path.join(destination, 'src/ui/PluginDialog.ui')),
-      { }
+      { appname }
     );
 
     this.fs.copy(

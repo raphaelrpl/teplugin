@@ -16,7 +16,7 @@ PluginDialog::PluginDialog(QWidget *parent,
 {
   m_ui->setupUi(this);
 
-  this->setWindowTitle(tr("Web Time Series Services"));
+  this->setWindowTitle(tr("<%= appname %>"));
 }
 
 PluginDialog::~PluginDialog() = default;

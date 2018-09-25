@@ -1,6 +1,8 @@
 #ifndef __TERRALIB_PLUGIN_DIALOG_H
 #define __TERRALIB_PLUGIN_DIALOG_H
 
+#include "Config.h"
+
 // TerraLib
 #ifndef Q_MOC_RUN
 #include <terralib/qt/widgets/canvas/Canvas.h>
